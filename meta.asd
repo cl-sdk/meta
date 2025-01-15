@@ -4,4 +4,5 @@
   :license "Unlicense"
   :author "Bruno Dias"
   :serial t
+  :depends-on (:alexandria :serapeum :uiop)
   :components ((:file "package")))
