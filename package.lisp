@@ -122,7 +122,7 @@
 	     (and ,@check-pairs))
 	   (export ',eq-name))))))
 
-(defmacro define-from (class-name name selected-slots)
+(defmacro define-from (class-name name selected-slots &optional extra-slots)
   (let ((spec (gethash (symbol-name class-name) declarations)))
     (destructuring-bind (class-spec slots-spec)
 	spec
@@ -135,7 +135,7 @@
 	`(progn
 	   (define
 	     (class ,(uiop:ensure-list name))
-	     (slots ,@slots)))))))
+	     (slots ,@slots ,@extra-slots)))))))
 
 (defmacro define (&body spec)
   `(progn
