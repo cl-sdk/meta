@@ -20,7 +20,9 @@
     ;; visibility
     :writer :reader :accessor
     ;; type
-    :type))
+    :type
+    ;; allocation
+    :allocation :location))
 
 (defmacro define-class (class-name)
   (let ((spec (gethash (symbol-name class-name) declarations)))
@@ -31,13 +33,13 @@
 		   (when (member :required attributes)
 		     (remf attributes :initform)
 		     (setf attributes
-			   (list* attributes
-				  `(:initform (error (concatenate
-						      'string
-						      ,(symbol-name class-name)
-						      "."
-						      ,(symbol-name name)
-						      " must be defined"))))))
+			   (append attributes
+				   `(:initform (error (concatenate
+						       'string
+						       ,(symbol-name class-name)
+						       "."
+						       ,(symbol-name name)
+						       " must be defined"))))))
 		   (loop
 		     for (key value) on attributes by #'cddr
 		     when (not (member key default-class-slots))
