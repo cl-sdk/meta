@@ -1,8 +1,8 @@
 (in-package :cl-user)
 
-(asdf:defsystem #:meta
+(asdf:defsystem #:meta-definitions
   :license "Unlicense"
   :author "Bruno Dias"
   :serial t
-  :depends-on (:alexandria :serapeum :uiop)
+  :depends-on (#:closer-mop #:alexandria #:serapeum #:uiop)
   :components ((:file "package")))

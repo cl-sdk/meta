@@ -1,9 +1,9 @@
-(defpackage #:meta.tests
-  (:use #:cl #:meta #:fiveam))
+(defpackage #:meta-definitions.tests
+  (:use #:cl #:meta-definitions #:fiveam))
 
-(in-package :meta.tests)
+(in-package :meta-definitions.tests)
 
-(def-suite* meta.tests)
+(def-suite* meta-definitions.tests)
 
 (eval-when (:compile-toplevel :load-toplevel)
   (define

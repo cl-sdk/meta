@@ -1,4 +1,4 @@
-(defpackage #:meta
+(defpackage #:meta-definitions
   (:use #:cl)
   (:export
    #:declarations
@@ -9,7 +9,7 @@
    #:define-from
    #:define))
 
-(in-package :meta)
+(in-package :meta-definitions)
 
 (defvar declarations
   (make-hash-table :test 'equal))
@@ -55,7 +55,8 @@
 			     (cdr slot-spec))))
 	  `(progn
 	     (defclass ,(caadr class-spec) ()
-	       ,slots)))))))
+	       ,slots)
+	     (closer-mop:ensure-finalized (find-class ',(caadr class-spec)))))))))
 
 (defmacro derive-readers (class-name)
   (let ((spec (gethash (symbol-name class-name) declarations)))

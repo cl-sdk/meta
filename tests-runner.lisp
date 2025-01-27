@@ -1,6 +1,6 @@
 (push *default-pathname-defaults* ql:*local-project-directories*)
 
-(quicklisp:quickload :meta.tests)
+(quicklisp:quickload :meta-definitions.tests)
 
 (in-package #:cl-user)
 
